@@ -1,3 +1,4 @@
 from django.contrib import admin
+from parceiros.models import Parceiro
 
-# Register your models here.
+admin.site.register(Parceiro)

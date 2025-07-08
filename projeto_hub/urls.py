@@ -21,5 +21,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('parceiros.urls')), # adiciona as rotas do meu app parceiros ao meu projeto
+    path('api/', include('parceiros.urls_api')), # adiciona as rotas do backend do app parceiros ao meu projeto.
+    path('', include('parceiros.urls')), # adiciona as rotas do frontend do app parceiros
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

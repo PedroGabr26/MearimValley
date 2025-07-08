@@ -1,11 +1,11 @@
+# urls do front end, vai pra página html
+
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import ParceiroViewSet
-
-router = DefaultRouter()
-router.register(r'parceiros', ParceiroViewSet)
+from .views import *
 
 urlpatterns = [
-    path('',include(router.urls)),
+    path('parceiros/', parceiros, name='mostrar-parceiros'),
+    path('create_parceiro/',create_parceiro, name='criar-parceiro'),
 ]
 

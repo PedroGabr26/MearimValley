@@ -9,4 +9,4 @@ class Parceiro(models.Model):
     data_criacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.nome
+        return self.nome_empresa
