@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Site</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- 🔷 MENU -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-blue-600">Meu Site</h1>
+      <nav class="space-x-6">
+        <a href="http://127.0.0.1:8000/home/" class="text-gray-700 hover:text-blue-600">Home</a>
+        <a href="http://127.0.0.1:8000/sobre/" class="text-gray-700 hover:text-blue-600">Sobre</a>
+        <a href="http://127.0.0.1:8000/noticias/" class="text-gray-700 hover:text-blue-600">Noticias</a>
+        <a href="http://127.0.0.1:8000/parceiros/" class="text-gray-700 hover:text-blue-600">Parceiros</a>
+        <a href="http://127.0.0.1:8000/contatos/" class="text-gray-700 hover:text-blue-600">Contatos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 🔶 CONTEÚDO PRINCIPAL -->
+  <main class="max-w-6xl mx-auto mt-12 px-6 flex flex-col md:flex-row items-center gap-8">
+    
+    <!-- TEXTO + BOTÃO -->
+    <div class="md:w-1/2">
+      <h2 class="text-3xl font-semibold mb-4">Bem-vindo ao nosso espaço de inovação!</h2>
+      <p class="text-lg text-gray-700 mb-6">
+        Este é um ambiente dedicado ao desenvolvimento de ideias, colaboração entre startups, instituições e profissionais do setor de tecnologia. Nosso objetivo é promover conexões estratégicas e facilitar o crescimento do ecossistema. Aqui, você encontrará informações sobre eventos, cursos, e oportunidades de inovação abertas à comunidade.
+      </p>
+      <a href="http://127.0.0.1:8000/sobre/" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Sobre</a>
+    </div>
+
+    <!-- IMAGEM -->
+    <div class="md:w-1/2">
+      <img src="https://via.placeholder.com/400x300" alt="Imagem ilustrativa" class="rounded shadow-lg w-full max-w-md mx-auto">
+    </div>
+  </main>
+
+</body>
+</html>

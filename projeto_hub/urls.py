@@ -17,10 +17,18 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #API
     path('api/', include('parceiros.urls_api')), # adiciona as rotas do backend do app parceiros ao meu projeto.
-    path('', include('parceiros.urls')), # adiciona as rotas do frontend do app parceiros
+    path('api/', include('noticias.urls_api')),
+    #FRONT
+    path('parceiros/', include('parceiros.urls')), # adiciona as rotas do frontend do app parceiros
+    path('noticias/', include('noticias.urls')),
+    path('home/',home, name='home'),
+    path('sobre/',sobre, name='sobre'),
+    path('contatos/',contatos, name='contatos')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

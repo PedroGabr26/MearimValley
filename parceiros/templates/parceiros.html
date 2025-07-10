@@ -10,11 +10,11 @@
     <h3>Exibir parceiros</h3>
     <li id="lista-parceiros"></li>
     <!-- <button>QUERO SER PARCEIRO</button> leva pra uma página que exibe formulário de inscrição para novos parceiros -->
-    <a href="http://127.0.0.1:8000/api/parceiros"><Button>QUERO SER PARCEIRO</Button></a>
+    <a href="http://127.0.0.1:8000/parceiros/create/"><Button>QUERO SER PARCEIRO</Button></a>
     <script>
         const li = document.getElementById('lista-parceiros')
         async function GetParceiros() {
-            const url = 'http://127.0.0.1:8000/api/parceiros'
+            const url = 'http://127.0.0.1:8000/api/parceiros/'
             const resp = await fetch(url)
             if(resp.status === 200){
                 const data = await resp.json()
