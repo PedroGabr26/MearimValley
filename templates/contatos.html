@@ -1,11 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Página de Contatos</h2>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contatos - Mearim Valley{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'style1.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section style="margin-top: 110px;">
+    <div class="contato-container">
+      <img src="{% static 'Logo_MV_1_transp.png' %}" alt="Logo Mearim Valley" class="contato-logo">
+      <h1>CONTATOS</h1>
+      <p class="contato-desc">
+        Use nosso formulário de contato para dúvidas ou entre em contato diretamente usando as informações abaixo.
+      </p>
+      <div class="contato-cards">
+        <div class="contato-card">
+          <div class="contato-icon local"></div>
+          <h2>Nosso Endereço</h2>
+          <p>
+            The Interior Design Studio Company<br>
+            The Courtyard, Al Quoz 1, Colorado, USA
+          </p>
+        </div>
+        <div class="contato-card">
+          <div class="contato-icon phone"></div>
+          <h2>Telefone (Fixo)</h2>
+          <p>
+            +912 3 567 8987<br>
+            +912 5 252 3336
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

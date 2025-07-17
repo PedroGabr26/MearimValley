@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Página Sobre</h2>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Sobre - Mearim Valley{% endblock %}
+
+{% block content %}
+  <section id="sobre" class="claro" role="region" aria-labelledby="sobre-titulo">
+    <div class="titulo-secao">
+      <hr>
+      <h2 id="sobre-titulo">Sobre a Mearim Valley</h2>
+      <hr>
+    </div>
+    <div class="sobre-container">
+      <div class="sobre-texto">
+        <p>A Mearim Valley é uma organização sem fins lucrativos que promove o desenvolvimento do ecossistema de inovação e tecnologia na região do Médio Mearim, no Maranhão. Atuando como uma ponte entre startups, universidades, empresas e governo, a Mearim Valley estimula a colaboração, a capacitação profissional e o empreendedorismo inovador por meio de ações estratégicas, eventos e parcerias que impulsionam o crescimento sustentável da comunidade local.</p>
+      </div>
+    </div>
+  </section>
+{% endblock %}

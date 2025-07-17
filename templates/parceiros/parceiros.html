@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Parceiros - Mearim Valley{% endblock %}
+
+{% block content %}
+<section id="parceiros" class="claro" role="region" aria-labelledby="parceiros-titulo" style="margin-top: 110px;">
+  <div class="titulo-secao">
+    <hr>
+    <h2 id="parceiros-titulo">Parceiros</h2>
+    <hr>
+  </div>
+  <div class="parceiros-grid" id="lista-parceiros">
+    <!-- JavaScript vai inserir os parceiros aqui -->
+  </div>
+
+  <!-- MOVA O BOTÃO PARA DENTRO -->
+  <div class="parceiros-botao">
+  <a href="{% url 'criar-parceiro' %}" class="botao-link">QUERO SER PARCEIRO</a>
+    </div>
+
+</section>
+
+<section id="contatos" role="region" aria-labelledby="contatos-titulo">
+  <div class="titulo-secao">
+    <hr>
+    <h2 id="contatos-titulo">Quer se tornar um parceiro também?
+      <p>Entre em contato conosco em:</p>
+    </h2>
+    <hr>
+  </div>
+  <div class="redes-sociais">
+    <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+    <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+{% endblock %}
+
+
+{% block script %}
+<script>
+  const container = document.getElementById('lista-parceiros')
+
+  async function GetParceiros() {
+    const url = 'http://127.0.0.1:8000/api/parceiros/'
+    const resp = await fetch(url)
+    if (resp.ok) {
+      const data = await resp.json()
+      data.forEach(parceiro => {
+        const div = document.createElement('div')
+        div.classList.add('parceiro-box')
+        div.innerHTML = `
+          <img src="${parceiro.logo}" alt="Logo de ${parceiro.nome_empresa}">
+          <p>${parceiro.nome_empresa}</p>
+        `
+        container.appendChild(div)
+      })
+    } else {
+      container.innerHTML = '<p>Erro ao carregar parceiros.</p>'
+    }
+  }
+
+  GetParceiros()
+</script>
+{% endblock %}
