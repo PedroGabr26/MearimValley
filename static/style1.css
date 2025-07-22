@@ -697,6 +697,7 @@ footer {
   }
 }
 
+<<<<<<< HEAD
 /* Estilos para página de contatos */
 .contato-container {
   max-width: 700px;
@@ -901,3 +902,24 @@ footer {
   max-width: 100%;
 }
 }
+=======
+.parceiros-botao {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.botao-link {
+  background-color: #007bff; /* azul padrão */
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.botao-link:hover {
+  background-color: #0056b3; /* azul mais escuro no hover */
+}
+>>>>>>> 86f410b91d4867919fb4907471c1f02e03f144b5
