@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>{% block title %}Mearim Valley{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="{% static 'logo_MV_1_transp.png' %}">
+  <link rel="stylesheet" href="{% static 'style1.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
+      <div class="logo">
+        <img src="{% static 'logo_colorida.png' %}" alt="Logo Mearim Valley" class="logo-img" />
+      </div>
+      <ul>
+        <li><a href="{% url 'home' %}">Página Home</a></li>
+        {% if user.is_authenticated and user.is_staff %}
+          <li><a href="/admin/">Admin</a></li>
+        {% endif %}
+        <li><a href="{% url 'mostrar_noticias' %}">Notícias</a></li>
+        <li><a href="{% url 'mostrar-parceiros' %}">Parceiros</a></li>
+        <li><a href="{% url 'sobre' %}">Sobre</a></li>
+        <li><a href="{% url 'contatos' %}">Contatos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer id="contatos" role="contentinfo" aria-labelledby="contatos-titulo">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h3>Mearim Valley</h3>
+        <p>Associação Mearim Valley</p>
+        <p>CNPJ: 12.345.678/0001-90</p>
+        <p>Organização sem fins lucrativos</p>
+      </div>
+      <div class="footer-contact">
+        <p>Alameda das Palmeiras, 100 - Centro</p>
+        <p>Mearim - MA | E de onde você estiver</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="{% static 'linkedin.png' %}" alt="LinkedIn" class="icon-social">
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="{% static 'facebook.png' %}" alt="Facebook" class="icon-social">
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
+          <img src="{% static 'twitter.png' %}" alt="Twitter" class="icon-social">
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="{% static 'instagram.png' %}" alt="Instagram" class="icon-social">
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+          <img src="{% static 'youtube.png' %}" alt="YouTube" class="icon-social">
+        </a>
+      </div>
+      <div class="footer-links">
+        <p>Dúvidas sobre o ecossistema?</p>
+        <p><a href="mailto:ecossistema@mearimvalley.org">Escreva para ecossistema@mearimvalley.org</a></p>
+        <p><a href="mailto:imprensa@mearimvalley.org">Escreva para imprensa@mearimvalley.org</a></p>
+        <p><a href="#newsletter">Newsletter</a></p>
+        <p><a href="#privacidade">Política de Privacidade</a></p>
+        <p><a href="#termos">Termos de Uso</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+{% block script %}
+{% endblock %}
+
+</body>
+</html>

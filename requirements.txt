@@ -1,0 +1,7 @@
+asgiref==3.7.2
+Django==5.0
+djangorestframework==3.15.1
+Pillow==11.3.0
+pytz==2025.2
+sqlparse==0.4.4
+typing-extensions==4.7.1

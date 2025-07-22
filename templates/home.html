@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Mearim Valley{% endblock %}
+
+{% block content %}
+<section id="noticias" role="region" aria-labelledby="noticias-titulo">
+  <div class="noticias-layout">
+    <div class="noticia-destaque">
+      <a href="#noticia1">
+        <img src="{% static 'noticia1.png' %}" alt="Evento de inovação e tecnologia">
+        <div class="noticia-info">
+          <h3>Inovação e Tecnologia na Região</h3>
+          <p>Evento reúne startups locais para apresentar soluções sustentáveis em tecnologia.</p>
+        </div>
+      </a>
+    </div>
+    <div class="noticias-laterais">
+      <div class="noticia-menor">
+        <a href="#noticia2">
+          <img src="{% static 'noticia2.png' %}" alt="Curso de empreendedorismo">
+          <div class="noticia-info">
+            <h4>Curso de Empreendedorismo</h4>
+            <p>Inscrições abertas para capacitação gratuita.</p>
+          </div>
+        </a>
+      </div>
+      <div class="noticia-menor">
+        <a href="#noticia3">
+          <img src="{% static 'noticia3.png' %}" alt="Parcerias estratégicas">
+          <div class="noticia-info">
+            <h4>Parcerias Estratégicas</h4>
+            <p>Novas alianças com universidades e empresas.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="claro" role="region" aria-labelledby="sobre-titulo">
+  <div class="sobre-container">
+    <div class="sobre-texto">
+      <h1>Bem-vindo ao ecossistema Mearim Valley!</h1>
+      <p>Este é um ambiente dedicado ao desenvolvimento de ideias, colaboração entre startups, instituições e profissionais do setor de tecnologia. Nosso objetivo é promover conexões estratégicas e facilitar o crescimento do ecossistema. Aqui, você encontrará informações sobre eventos, cursos e oportunidades de inovação abertas à comunidade.</p>
+      <a href="{% url 'sobre' %}" class="btn-sobre">Saiba Mais</a>
+    </div>
+    <div class="sobre-imagem">
+      <img src="{% static 'imagem-ilustrativa.png' %}" alt="Imagem ilustrativa do ecossistema Mearim Valley">
+    </div>
+  </div>
+</section>
+
+<section id="acoes" role="region" aria-labelledby="acoes-titulo">
+  <div class="acoes-grid">
+    <a href="" class="acao-card">
+      <div class="card-background" style="background-image: url('{% static 'reuniao.jpg' %}');">
+        <div class="card-content">
+          <h3>Reuniões</h3>
+          <p>Conecte-se com líderes! Participe agora.</p>
+          <span class="card-link">Saiba mais</span>
+        </div>
+      </div>
+    </a>
+    <a href="" class="acao-card">
+      <div class="card-background" style="background-image: url('{% static 'aula.jpg' %}');">
+        <div class="card-content">
+          <h3>Cursos</h3>
+          <p>Desenvolva suas habilidades! Inscreva-se.</p>
+          <span class="card-link">Saiba mais</span>
+        </div>
+      </div>
+    </a>
+    <a href="" class="acao-card">
+      <div class="card-background" style="background-image: url('{% static 'evento.jpg' %}');">
+        <div class="card-content">
+          <h3>Eventos</h3>
+          <p>Inove junto com a comunidade! Venha agora.</p>
+          <span class="card-link">Saiba mais</span>
+        </div>
+      </div>
+    </a>
+    <a href="" class="acao-card">
+      <div class="card-background" style="background-image: url('{% static 'edital.jpg' %}');">
+        <div class="card-content">
+          <h3>Editais</h3>
+          <p>Acelerando seu crescimento! Confira agora.</p>
+          <span class="card-link">Saiba mais</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="mapeamento" class="claro" role="region" aria-labelledby="mapeamento-titulo">
+  <div class="mapeamento-grid">
+    <div class="item-mapeamento">
+      <img src="{% static 'participantes-removebg-preview.png' %}" alt="Ícone de participantes">
+      <h3>271</h3>
+      <p>PARTICIPANTES</p>
+    </div>
+    <div class="item-mapeamento">
+      <img src="{% static 'empresas-removebg-preview.png' %}" alt="Ícone de empresas">
+      <h3>13</h3>
+      <p>EMPRESAS</p>
+    </div>
+    <div class="item-mapeamento">
+      <img src="{% static 'instituicoes-removebg-preview.png' %}" alt="Ícone de instituições">
+      <h3>08</h3>
+      <p>INSTITUIÇÕES</p>
+    </div>
+    <div class="item-mapeamento">
+      <img src="{% static 'startups-removebg-preview.png' %}" alt="Ícone de startups">
+      <h3>47</h3>
+      <p>STARTUPS</p>
+    </div>
+  </div>
+  <div class="saiba-mais-container">
+    <a href="#saiba-mais" class="btn-saiba-mais">SAIBA MAIS...</a>
+  </div>
+</section>
+{% endblock %}

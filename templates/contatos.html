@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contatos - Mearim Valley{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'style1.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section style="margin-top: 110px;">
+    <div class="contato-container">
+      <img src="{% static 'Logo_MV_1_transp.png' %}" alt="Logo Mearim Valley" class="contato-logo">
+      <h1>CONTATOS</h1>
+      <p class="contato-desc">
+        Use nosso formulário de contato para dúvidas ou entre em contato diretamente usando as informações abaixo.
+      </p>
+      <div class="contato-cards">
+        <div class="contato-card">
+          <div class="contato-icon local"></div>
+          <h2>Nosso Endereço</h2>
+          <p>
+            Alameda das Palmeiras, 100 - Centro<br>
+            Mearim - MA<br>
+          </p>
+        </div>
+        <div class="contato-card">
+          <div class="contato-icon phone"></div>
+          <h2>Telefone (Fixo)</h2>
+          <p>
+            +912 3 567 8987<br>
+            +912 5 252 3336
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

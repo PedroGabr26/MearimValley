@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Notícias - Mearim Valley{% endblock %}
+
+{% block content %}
+<main>
+  <section id="noticias" class="claro" role="region" aria-labelledby="noticias-titulo" style="margin-top: 110px;">
+    <div class="titulo-secao">
+      <hr>
+      <h2 id="noticias-titulo">Notícias</h2>
+      <hr>
+    </div>
+
+    <div class="noticias-lista">
+      <h3>Exibir Notícias</h3>
+      <ul id="lista-noticias">
+        <!-- JS insere as notícias aqui -->
+      </ul>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{% block script %}
+<script>
+  async function GetNoticias() {
+    const ul = document.getElementById('lista-noticias')
+    const resp = await fetch('http://127.0.0.1:8000/api/noticias/')
+    if (resp.ok) {
+      const data = await resp.json()
+      data.forEach(noticia => {
+        const li = document.createElement('li')
+        li.innerHTML = `<strong>${noticia.titulo}</strong>`
+        ul.appendChild(li)
+      })
+    } else {
+      ul.innerHTML = "<li>Erro ao carregar notícias.</li>"
+    }
+  }
+  GetNoticias()
+</script>
+{% endblock %}
