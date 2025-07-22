@@ -81,6 +81,7 @@
 <body>
   <div class="form-container">
     <h2>Cadastro de Parceiro</h2>
+    <div id="mensagem" style="margin-bottom: 20px; text-align: center; font-weight: 500;"></div>
     <form id="formulariopost" action="" method="post" enctype="multipart/form-data">
       <label for="logo_empresa">Logo</label>
       <input type="file" name="logo_empresa" id="logo" />
@@ -100,6 +101,7 @@
       <button type="submit" id="createParceiro">Enviar</button>
     </form>
     <script>
+      const mensagem = document.getElementById('mensagem')
       async function PostParceiro(event) {
         event.preventDefault();
         const form = document.getElementById('formulariopost');
@@ -135,13 +137,20 @@
             const data = await resp.json();
             console.log('Formulário Enviado');
             console.log(data);
+            mensagem.textContent = '✅ Parceiro cadastrado com sucesso!'
+            mensagem.style.color = 'green'
+
           } else {
             const erro = await resp.text();
             console.log(erro);
+            mensagem.textContent = '❌ Erro no Cadastro. Tente Novamente'
+            mensagem.style.color = 'red'
           }
         } catch (error) {
           console.log('Problema na requisição');
           console.log(error);
+          mensagem.textContent = '❌ Erro na conexão com o servidor.';
+          mensagem.style.color = 'red';
         }
       }
 
