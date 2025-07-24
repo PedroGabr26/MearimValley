@@ -25,9 +25,11 @@ urlpatterns = [
     #API
     path('api/', include('parceiros.urls_api')), # adiciona as rotas do backend do app parceiros ao meu projeto.
     path('api/', include('noticias.urls_api')),
+    path('api/', include('editais.urls_api')),
     #FRONT
     path('parceiros/', include('parceiros.urls')), # adiciona as rotas do frontend do app parceiros
     path('noticias/', include('noticias.urls')),
+    path('edital/', include('editais.urls')),
     path('home/',home, name='home'),
     path('sobre/',sobre, name='sobre'),
     path('contatos/',contatos, name='contatos')

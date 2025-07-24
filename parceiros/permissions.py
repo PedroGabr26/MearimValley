@@ -11,3 +11,14 @@ class IsAdminEditOrReadOnly(BasePermission):
             return True
         return request.user and request.user.is_staff
     
+
+class IsAdminGetorPost(BasePermission):
+    """
+    Permite apenas leitura e criação para qualquer usuário.
+    Somente admins podem editar ou deletar.
+    """
+    def has_permission(self, request, view):
+        # SAFE_METHOD = ['GET','OPTIONS','HEAD']
+        if request.method in SAFE_METHODS or request.method == "POST":
+            return True
+        return request.user and request.user.is_staff
