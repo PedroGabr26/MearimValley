@@ -1,0 +1,24 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static custom_css %}">
+  <link rel="stylesheet" href="{% static 'css/admin_custom.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="dashboard-cards">
+    <div class="card parceiros-card">
+      <h3>Total de Parceiros</h3>
+      <p id="total-parceiros">--</p>  <!-- valor será preenchido via backend depois -->
+    </div>
+  </div>
+{% endblock %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
