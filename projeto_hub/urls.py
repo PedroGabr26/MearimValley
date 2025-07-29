@@ -28,12 +28,16 @@ urlpatterns = [
     path('api/', include('noticias.urls_api')),
     path('api/', include('editais.urls_api')),
     path('api/', include('cursos.urls_api')),
+    path('api/', include('eventos.urls_api')),
+    path('api/', include('encontros.urls_api')),
     #ROTAS FRONT
+    path('home/',home, name='home'),
+    path('sobre/',sobre, name='sobre'),
+    path('contatos/',contatos, name='contatos'),
     path('parceiros/', include('parceiros.urls')), # adiciona as rotas do frontend do app parceiros
     path('noticias/', include('noticias.urls')),
     path('edital/', include('editais.urls')),
     path('cursos/', include('cursos.urls')),
-    path('home/',home, name='home'),
-    path('sobre/',sobre, name='sobre'),
-    path('contatos/',contatos, name='contatos'),
+    path('eventos/', include('eventos.urls')),
+    path('encontros/', include('encontros.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

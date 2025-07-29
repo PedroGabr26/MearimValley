@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'noticias',
     'editais',
     'cursos',
+    'eventos',
+    'encontros',
+    
 ]
 
 MIDDLEWARE = [
