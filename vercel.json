@@ -1,0 +1,19 @@
+{
+  "builds": [
+    {
+      "src": "projeto_hub/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "projeto_hub/projeto_hub/wsgi.py"
+    }
+  ]
+}
+
