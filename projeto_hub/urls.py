@@ -30,6 +30,8 @@ urlpatterns = [
     path('api/', include('cursos.urls_api')),
     path('api/', include('eventos.urls_api')),
     path('api/', include('encontros.urls_api')),
+    path('api/', include('startups.urls_api')),
+    path('api/', include('instituicoes.urls_api')),
     #ROTAS FRONT
     path('home/',home, name='home'),
     path('sobre/',sobre, name='sobre'),
@@ -40,4 +42,6 @@ urlpatterns = [
     path('cursos/', include('cursos.urls')),
     path('eventos/', include('eventos.urls')),
     path('encontros/', include('encontros.urls')),
+    path('startups/', include('startups.urls')),
+    path('instituicoes/', include('instituicoes.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

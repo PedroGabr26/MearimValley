@@ -17,15 +17,35 @@
       <div class="logo">
         <img src="{% static 'logo_colorida.png' %}" alt="Logo Mearim Valley" class="logo-img" />
       </div>
-      <ul>
-        <li><a href="{% url 'home' %}">Página Home</a></li>
-        {% if user.is_authenticated and user.is_staff %}
-          <li><a href="/admin/">Admin</a></li>
-        {% endif %}
-        <li><a href="{% url 'mostrar_noticias' %}">Notícias</a></li>
-        <li><a href="{% url 'mostrar-parceiros' %}">Parceiros</a></li>
-        <li><a href="{% url 'sobre' %}">Sobre</a></li>
-        <li><a href="{% url 'contatos' %}">Contatos</a></li>
+      <ul class="menu">
+      <li><a href="{% url 'home' %}">Página Home</a></li>
+      {% if user.is_authenticated and user.is_staff %}
+        <li><a href="/admin/">Admin</a></li>
+      {% endif %}
+      <li>
+        <a href="#">Ações</a>
+        <ul class="submenu">
+          <li><a href="{% url 'eventos' %}">Eventos</a></li>
+          <li><a href="{% url 'encontros' %}">Encontros</a></li>
+          <li><a href="{% url 'cursos' %}">Cursos</a></li>
+          <li><a href="{% url 'editais' %}">Editais</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Mapeamento</a>
+        <ul>
+            <li><a href="">Startups</a></li>
+            <li><a href="">Instituições Educacionais</a></li>
+            <li><a href=""></a>Coorporativos</li>
+            <li><a href=""></a>Ambientes</li>
+            <li><a href="">Profissionais</a></li>
+            <li><a href="">Faça Parte</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'mostrar_noticias' %}">Notícias</a></li>
+      <li><a href="{% url 'mostrar-parceiros' %}">Parceiros</a></li>
+      <li><a href="{% url 'sobre' %}">Sobre</a></li>
+      <li><a href="{% url 'contatos' %}">Contatos</a></li>
       </ul>
     </nav>
   </header>
