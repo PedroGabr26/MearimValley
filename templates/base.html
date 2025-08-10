@@ -17,14 +17,14 @@
       <div class="logo">
         <img src="{% static 'logo_colorida.png' %}" alt="Logo Mearim Valley" class="logo-img" />
       </div>
-      <ul class="menu">
+      <ul>
       <li><a href="{% url 'home' %}">Página Home</a></li>
       {% if user.is_authenticated and user.is_staff %}
         <li><a href="/admin/">Admin</a></li>
       {% endif %}
       <li>
         <a href="#">Ações</a>
-        <ul class="submenu">
+        <ul>
           <li><a href="{% url 'eventos' %}">Eventos</a></li>
           <li><a href="{% url 'encontros' %}">Encontros</a></li>
           <li><a href="{% url 'cursos' %}">Cursos</a></li>
@@ -38,7 +38,7 @@
             <li><a href="">Instituições Educacionais</a></li>
             <li><a href=""></a>Coorporativos</li>
             <li><a href=""></a>Ambientes</li>
-            <li><a href="">Profissionais</a></li>
+            <li><a href="">rofissionais</a></li>
             <li><a href="">Faça Parte</a></li>
         </ul>
       </li>

@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'encontros',
     'startups',
     'instituicoes',
+    'corporativos',
+    'ambientes',
+    'profissionais',
 ]
 
 MIDDLEWARE = [
