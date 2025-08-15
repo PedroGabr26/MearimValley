@@ -1,0 +1,29 @@
+/* static/css/custom_admin.css */
+body {
+  background-color: #ffffff;
+}
+
+.module h2 {
+  color: #004080;
+}
+
+/* Muda a cor do cabeçalho */
+#header {
+  background-color: #004080;
+  color: white;
+}
+
+a:link, a:visited {
+  color: #004080;
+}
+
+a:hover {
+  color: #0066cc;
+}
+
+
+/* Estilo nos botões de salvar */
+input[type="submit"].default {
+    background-color: #3282B8 !important;
+    color: white !important;
+}

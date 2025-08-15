@@ -1122,3 +1122,53 @@ footer {
 
 }
 
+ul.menu {
+    list-style: none;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+ul.menu li {
+    position: relative;
+}
+
+ul.menu > li {
+    padding: 15px;
+}
+
+ul.menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+/* SUBMENU */
+ul.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #555;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 160px;
+    z-index: 1000;
+}
+
+ul.submenu li a {
+    padding: 10px;
+    display: block;
+    color: white;
+}
+
+ul.submenu li a:hover {
+    background-color: #777;
+}
+
+/* MOSTRAR SUBMENU AO PASSAR O MOUSE */
+li:hover > ul.submenu {
+    display: block;
+}

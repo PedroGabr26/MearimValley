@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-2gs+x-_=i)@$21ak9du4^3myk^067^^ijv!^($@0u@qdou0gr3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,6 +44,13 @@ INSTALLED_APPS = [
     'noticias',
     'editais',
     'cursos',
+    'eventos',
+    'encontros',
+    'startups',
+    'instituicoes',
+    'corporativos',
+    'ambientes',
+    'profissionais',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'projeto_hub.urls'
@@ -61,7 +69,7 @@ ROOT_URLCONF = 'projeto_hub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,4 +145,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configuração de salvamento automático das logos enviados no site dentro de "media"
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
