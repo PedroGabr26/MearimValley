@@ -56,13 +56,13 @@
     <a href="" class="acao-card">
       <div class="card-background" style="background-image: url('{% static 'reuniao.jpg' %}');">
         <div class="card-content">
-          <h3>Reuniões</h3>
+          <h3>Encontros</h3>
           <p>Conecte-se com líderes! Participe agora.</p>
           <span class="card-link">Saiba mais</span>
         </div>
       </div>
     </a>
-    <a href="" class="acao-card">
+    <a href="{% url 'cursos' %}" class="acao-card">
       <div class="card-background" style="background-image: url('{% static 'aula.jpg' %}');">
         <div class="card-content">
           <h3>Cursos</h3>
@@ -80,7 +80,7 @@
         </div>
       </div>
     </a>
-    <a href="" class="acao-card">
+    <a href="{% url 'editais' %}" class="acao-card">
       <div class="card-background" style="background-image: url('{% static 'edital.jpg' %}');">
         <div class="card-content">
           <h3>Editais</h3>

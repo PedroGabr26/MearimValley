@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'parceiros',
     'noticias',
+    'editais',
+    'cursos',
 ]
 
 MIDDLEWARE = [

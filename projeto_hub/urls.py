@@ -22,13 +22,17 @@ from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #API
+    #ROTAS API
     path('api/', include('parceiros.urls_api')), # adiciona as rotas do backend do app parceiros ao meu projeto.
     path('api/', include('noticias.urls_api')),
-    #FRONT
+    path('api/', include('editais.urls_api')),
+    path('api/', include('cursos.urls_api')),
+    #ROTAS FRONT
     path('parceiros/', include('parceiros.urls')), # adiciona as rotas do frontend do app parceiros
     path('noticias/', include('noticias.urls')),
+    path('edital/', include('editais.urls')),
+    path('cursos/', include('cursos.urls')),
     path('home/',home, name='home'),
     path('sobre/',sobre, name='sobre'),
-    path('contatos/',contatos, name='contatos')
+    path('contatos/',contatos, name='contatos'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,18 +5,43 @@
 
 {% block content %}
 <main>
-  <section id="noticias" class="claro" role="region" aria-labelledby="noticias-titulo" style="margin-top: 110px;">
-    <div class="titulo-secao">
+  <section id="noticias" class="fundo-verde" role="region" aria-labelledby="noticias-titulo" style="margin-top: 110px;">
+    <div class="titulo-secao" style="text-align:center;">
       <hr>
       <h2 id="noticias-titulo">Notícias</h2>
       <hr>
     </div>
-
-    <div class="noticias-lista">
-      <h3>Exibir Notícias</h3>
-      <ul id="lista-noticias">
-        <!-- JS insere as notícias aqui -->
-      </ul>
+    <div class="noticias-cards-container">
+      <div class="noticia-card">
+        <div class="noticia-card-title">Notícia 1</div>
+        <img src="{% static 'noticia1.png' %}" alt="Notícia 1">
+        <div class="noticia-card-content">
+          <div class="noticia-card-desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+          <a href="#" class="noticia-card-btn">Saiba Mais</a>
+        </div>
+      </div>
+      <div class="noticia-card">
+        <div class="noticia-card-title">Notícia 2</div>
+        <img src="{% static 'noticia2.png' %}" alt="Notícia 2">
+        <div class="noticia-card-content">
+          <div class="noticia-card-desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+          <a href="#" class="noticia-card-btn">Saiba Mais</a>
+        </div>
+      </div>
+      <div class="noticia-card">
+        <div class="noticia-card-title">Notícia 3</div>
+        <img src="{% static 'noticia3.png' %}" alt="Notícia 3">
+        <div class="noticia-card-content">
+          <div class="noticia-card-desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+          <a href="#" class="noticia-card-btn">Saiba Mais</a>
+        </div>
+      </div>
     </div>
   </section>
 </main>
