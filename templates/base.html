@@ -32,12 +32,12 @@
       <li>
         <a href="#">Mapeamento</a>
         <ul class="submenu">
-            <li><a href="#">Startups</a></li>
-            <li><a href="#">Instituições Educacionais</a></li>
-            <li><a href="#">Corporativos</a></li>
-            <li><a href="#">Ambientes</a></li>
-            <li><a href="#">Profissionais</a></li>
-            <li><a href="#">Faça Parte</a></li>
+            <li><a href="{% url 'mostrar_startups' %}">Startups</a></li>
+            <li><a href="{% url 'mostrar_instituicoes' %}">Instituições Educacionais</a></li>
+            <li><a href="{% url 'corporativos' %}"></a>Coorporativos</li>
+            <li><a href="{% url 'mostrar_ambientes' %}"></a>Ambientes</li>
+            <li><a href="{% url 'mostrar_profissionais' %}">Profissionais</a></li>
+            <li><a href="https://forms.gle/chXnL9SFh4RYdf5g8">Faça Parte</a></li>
         </ul>
       </li>
       <li><a href="{% url 'mostrar_noticias' %}">Notícias</a></li>
