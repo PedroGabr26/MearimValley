@@ -5,5 +5,34 @@
 
 
 {% block content %}
-    <h2>Página de Encontros</h2>
+<section class="fundo-paginas"> 
+    <div class="titulo-secao">
+        <hr>
+            <h2>Encontros</h2>
+        <hr>
+    </div>
+  <div class="noticias-cards-container">
+    <div class="noticia-card">
+      <div class="noticia-card-title">Encontro 1</div>
+      <img src="{% static 'reuniao.jpg' %}" alt="Encontro 1">
+      <div class="noticia-card-content">
+        <div class="noticia-card-desc">
+          Saiba mais sobre esse evento.
+        </div>
+        <a href="#" class="noticia-card-btn">Saiba mais</a>
+      </div>
+    </div>
+    <div class="noticia-card">
+      <div class="noticia-card-title">Encontro 2</div>
+      <img src="{% static 'reuniao.jpg' %}" alt="Encontro 2">
+      <div class="noticia-card-content">
+        <div class="noticia-card-desc">
+          Saiba mais sobre esse evento.
+        </div>
+        <a href="#" class="noticia-card-btn">Saiba mais</a>
+      </div>
+    </div>
+    <!-- Adicione mais cards conforme necessário -->
+  </div>
+</section> 
 {% endblock %}
