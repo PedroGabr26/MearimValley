@@ -5,5 +5,34 @@
 
 
 {% block content %}
-    <h2>Página de Cursos</h2>
+<section class="fundo-paginas"> 
+    <div class="titulo-secao">
+        <hr>
+            <h2>Cursos</h2>
+        <hr>
+    </div>
+  <div class="noticias-cards-container">
+    <div class="noticia-card">
+      <div class="noticia-card-title">Curso 1</div>
+      <img src="{% static 'aula.jpg' %}" alt="Curso 1">
+      <div class="noticia-card-content">
+        <div class="noticia-card-desc">
+          Descrição do curso 1.
+        </div>
+        <a href="#" class="noticia-card-btn">Saiba mais</a>
+      </div>
+    </div>
+    <div class="noticia-card">
+      <div class="noticia-card-title">Curso 2</div>
+      <img src="{% static 'aula.jpg' %}" alt="Curso 2">
+      <div class="noticia-card-content">
+        <div class="noticia-card-desc">
+          Descrição do curso 2.
+        </div>
+        <a href="#" class="noticia-card-btn">Saiba mais</a>
+      </div>
+    </div>
+    <!-- Adicione mais cards conforme necessário -->
+  </div>
+</section> 
 {% endblock %}

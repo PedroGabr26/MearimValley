@@ -389,7 +389,7 @@ section {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 50px;
   padding: 0 1rem;
 }
 
@@ -787,13 +787,23 @@ section.claro {
   color: #134e6f;
 }
 
-.fundo-verde {
+/* .fundo-verde {
   background-color: var(--secondary-color);
   color: var(--text-light);
+} */
+
+.fundo-paginas {
+  background-color: #e6f4f9;
+  color: #222;
+}
+
+section.fundo-paginas {
+  background-color: #e6f4f9 !important;
+  color: #222 !important;
 }
 
 .card-personalizado {
-  background-color: #e5f7f1;
+  background-color: #e6f4f9;
   border: 1px solid var(--secondary-color);
   border-radius: 10px;
   padding: 20px;

@@ -4,5 +4,44 @@
 {% block title %}Eventos - Mearim Valley{% endblock %}
 
 {% block content %}
-    <h2>Página de Eventos</h2>
+<section class="fundo-paginas"> 
+    <div class="titulo-secao">
+        <hr>
+            <h2>Eventos</h2>
+        <hr>
+    </div>
+  <div class="noticias-cards-container">
+    <div class="noticia-card">
+      <div class="noticia-card-title">Evento 1</div>
+      <img src="{% static 'evento.jpg' %}" alt="Evento 1">
+      <div class="noticia-card-content">
+        <div class="noticia-card-desc">
+          Descrição do evento 1.
+        </div>
+        <a href="#" class="noticia-card-btn">Saiba mais</a>
+      </div>
+    </div>
+    <div class="noticia-card">
+      <div class="noticia-card-title">Evento 2</div>
+      <img src="{% static 'evento.jpg' %}" alt="Evento 2">
+      <div class="noticia-card-content">
+        <div class="noticia-card-desc">
+          Descrição do evento 2.
+        </div>
+        <a href="#" class="noticia-card-btn">Saiba mais</a>
+      </div>
+    </div>
+    <div class="noticia-card">
+      <div class="noticia-card-title">Evento 3</div>
+      <img src="{% static 'evento.jpg' %}" alt="Evento 3">
+      <div class="noticia-card-content">
+        <div class="noticia-card-desc">
+          Descrição do evento 3.
+        </div>
+        <a href="#" class="noticia-card-btn">Saiba mais</a>
+      </div>
+    </div>
+    <!-- Adicione mais cards conforme necessário -->
+  </div>
+</section> 
 {% endblock %}
