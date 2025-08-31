@@ -1,6 +1,6 @@
 /* static/css/custom_admin.css */
 body {
-  background-color: #ffffff;
+  background-color: #383333;
 }
 
 .module h2 {
@@ -10,7 +10,7 @@ body {
 /* Muda a cor do cabeçalho */
 #header {
   background-color: #004080;
-  color: white;
+  color: #383333;
 }
 
 a:link, a:visited {

@@ -3,5 +3,39 @@
 {% block title %} Corporativos - Mearim Valley {% endblock %}
 
 {% block content %}
-    <h2>Página de Corporativos</h2>
+<h2>Página de Corporativos</h2>
+<section id="parceiros" class="fundo-verde" role="region" aria-labelledby="parceiros-titulo" style="margin-top: 110px;">
+  <div class="titulo-secao">
+  </div>
+  <div class="parceiros-grid" id="lista-coorporativos">
+</section>
+{% endblock %}
+
+{% block script %}
+<script>
+  const container = document.getElementById('lista-coorporativos')
+
+  async function GetCoorporativos() {
+    const url = 'http://127.0.0.1:8000/api/coorporativos/'
+    const resp = await fetch(url)
+    if (resp.ok) {
+      const data = await resp.json()
+      data.forEach(coorporativos => {
+        const div = document.createElement('div')
+        div.classList.add('parceiro-box')
+        div.innerHTML = `
+            ${coorporativos.nome
+                ? `<img src="${coorporativos.logo}">`
+                : `<div style='height:100px'>Sem logo</div>`
+            }
+            <p>${coorporativos.nome}</p>        `
+        container.appendChild(div)
+      })
+    } else {
+      container.innerHTML = '<p>Erro ao carregar profissionais.</p>'
+    }
+  }
+
+  GetCoorporativos()
+</script>
 {% endblock %}

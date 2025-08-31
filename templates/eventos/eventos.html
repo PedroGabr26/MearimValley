@@ -1,8 +1,50 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Eventos - Mearim Valley{% endblock %}
+{% block title %}Encontros - Mearim Valley{% endblock %}
+
 
 {% block content %}
-    <h2>Página de Eventos</h2>
+<h2>Página de Encontros</h2>
+<section id="parceiros" class="fundo-verde" role="region" aria-labelledby="parceiros-titulo" style="margin-top: 110px;">
+  <div class="titulo-secao">
+    <hr>
+    <h2 id="parceiros-titulo">Encontros</h2>
+    <hr>
+  </div>
+  <div class="parceiros-grid" id="lista-encontros">
+    <!-- Editais serão inseridos via JavaScript -->
+  </div>
+</section>
+{% endblock %}
+
+
+{% block script %}
+<script>
+  const container = document.getElementById('lista-eventos')
+
+  async function GetEventos() {
+    const url = 'http://127.0.0.1:8000/api/eventos/'
+    const resp = await fetch(url)
+    if (resp.ok) {
+      const data = await resp.json()
+      data.forEach(eventos => {
+        const div = document.createElement('div')
+        div.classList.add('parceiro-box')
+        div.innerHTML = `
+            ${eventos.titulo 
+                // em "img" vai uma foto padrão para todos os objetos do app eventos
+                ? `<img src="" alt="Logo de ">`
+                : `<div style='height:100px'>Sem logo</div>`
+            }
+            <p>${eventos.link}</p>        `
+        container.appendChild(div)
+      })
+    } else {
+      container.innerHTML = '<p>Erro ao carregar editais.</p>'
+    }
+  }
+
+  GetEventos()
+</script>
 {% endblock %}

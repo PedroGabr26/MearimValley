@@ -5,5 +5,43 @@
 
 
 {% block content %}
-    <h2>Página de Cursos</h2>
+<h2>Página de Cursos</h2>
+<section id="parceiros" class="fundo-verde" role="region" aria-labelledby="parceiros-titulo" style="margin-top: 110px;">
+  <div class="titulo-secao">
+    <hr>
+    <h2 id="parceiros-titulo">Cursos ofertados</h2>
+    <hr>
+  </div>
+  <div class="parceiros-grid" id="lista-cursos">
+    <!-- Cursos serão inseridos via JavaScript -->
+  </div>
+</section>
 {% endblock %}
+
+{% block script %}
+<script>
+  const container = document.getElementById('lista-cursos')
+
+  async function GetCursos() {
+    const url = 'http://127.0.0.1:8000/api/cursos/'
+    const resp = await fetch(url)
+    if (resp.ok) {
+      const data = await resp.json()
+      data.forEach(curso => {
+        const div = document.createElement('div')
+        div.classList.add('parceiro-box')
+        div.innerHTML = `
+            ${curso.titulo 
+                // em "img" vai uma foto padrão para todos os objetos do app curso
+                ? `<img src="" alt="Logo de ">`
+                : `<div style='height:100px'>Sem logo</div>`
+            }
+            <p>${curso.link}</p>        `
+        container.appendChild(div)
+      })
+    } else {
+      container.innerHTML = '<p>Erro ao carregar cursos.</p>'
+    }
+  }
+
+  GetCursos()

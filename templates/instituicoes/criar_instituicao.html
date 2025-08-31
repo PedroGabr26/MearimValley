@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cadastro de Instituição - Mearim Valley{% endblock %}
+
+{% block content %}
+<section class="fundo-verde" style="min-height: 100vh; padding-top: 20px;">
+  <div class="form-container">
+    <img src="{% static 'logo-mearim-preto.png' %}" alt="Logo Mearim Valley" style="width:180px; margin-bottom:20px; display:block; margin-left:auto; margin-right:auto;">
+    <h2>Cadastre sua Instituição</h2>
+    <form id="formulariopost" action="" method="post" enctype="multipart/form-data">
+      <label for="logo_empresa">Logo</label>
+      <input type="file" name="logo_instituicao" id="logo" />
+
+      <label for="nome_empresa">Nome</label>
+      <input type="text" name="nome_instituicao" id="nome" required />
+
+      <label for="descricao">Descrição</label>
+      <input type="text" name="descricao_instituicao" id="descricao" required />
+
+      <label for="site">Site</label>
+      <input type="url" name="link_site" id="site" />
+
+      <button type="submit" id="createInstituicao">Enviar</button>
+    </form>
+    <span id="mensagem"></span>
+  </div>
+</section>
+{% endblock %}
+
+{% block script %}
+<script>
+  const mensagem = document.getElementById('mensagem')
+  async function PostInstituicoes(event) {
+    event.preventDefault();
+    const form = document.getElementById('formulariopost');
+    const formData = new FormData(form);
+
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === name + "=") {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
+    const csrftoken = getCookie("csrftoken");
+
+    try {
+      const resp = await fetch('http://127.0.0.1:8000/api/instituicoes/', {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': csrftoken,
+        },
+        body: formData,
+      });
+
+      if (resp.ok) {
+        const data = await resp.json();
+        mensagem.textContent = '✅ Parceiro cadastrado com sucesso!'
+        mensagem.style.color = 'green'
+      } else {
+        const erro = await resp.text();
+        mensagem.textContent = '❌ Erro no Cadastro. Tente Novamente'
+        mensagem.style.color = 'red'
+      }
+    } catch (error) {
+      mensagem.textContent = '❌ Erro na conexão com o servidor.';
+      mensagem.style.color = 'red';
+    }
+  }
+
+  document.getElementById('formulariopost').addEventListener('submit', PostInstituicoes);
+</script>
+{% endblock %}
+</body>
+</html>

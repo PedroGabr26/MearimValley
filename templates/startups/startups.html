@@ -3,5 +3,48 @@
 {% block title %} Startups - Mearim Valley {% endblock %}
 
 {% block content %}
-    <h2>Página de Startups</h2>
+<h2>Startups</h2>
+<section id="startups" class="fundo-verde" role="region" aria-labelledby="parceiros-titulo" style="margin-top: 110px;">
+  <div class="titulo-secao">
+    <hr>
+    <h2 id="startup-titulo">Conheça nossas Startups</h2>
+    <hr>
+  </div>
+  <div class="parceiros-grid" id="lista-startups">
+    <!-- Parceiros serão inseridos via JavaScript -->
+  </div>
+  <div class="parceiros-botao">
+    <a href="{% url 'criar_startup' %}" class="botao-link">QUERO SER STARTUP PARCEIRA</a>
+  </div>
+</section>
+{% endblock %}
+
+
+{% block script %}
+<script>
+  const container = document.getElementById('lista-startups')
+
+  async function GetStartups() {
+    const url = 'http://127.0.0.1:8000/api/startups/'
+    const resp = await fetch(url)
+    if (resp.ok) {
+      const data = await resp.json()
+      data.forEach(startup => {
+        const div = document.createElement('div')
+        div.classList.add('parceiro-box')
+        div.innerHTML = `
+            ${startup.logo_startup
+                ? `<img src="${startup.logo_startup}" alt="Logo de ${startup.nome_startup}">`
+                : `<div style='height:100px'>Sem logo</div>`
+            }
+            <p>${startup.nome_startup}</p>        `
+        container.appendChild(div)
+      })
+    } else {
+      container.innerHTML = '<p>Erro ao carregar startups.</p>'
+    }
+  }
+
+  GetStartups()
+</script>
 {% endblock %}
