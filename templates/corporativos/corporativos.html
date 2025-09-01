@@ -4,38 +4,56 @@
 
 {% block content %}
 <h2>Página de Corporativos</h2>
-<section id="parceiros" class="fundo-verde" role="region" aria-labelledby="parceiros-titulo" style="margin-top: 110px;">
+<section id="corporativos" class="fundo-verde" role="region" aria-labelledby="corporativos-titulo" style="margin-top: 110px;">
   <div class="titulo-secao">
+    <hr>
+    <h2 id="corporativos-titulo">Empresas Corporativas</h2>
+    <hr>
   </div>
-  <div class="parceiros-grid" id="lista-coorporativos">
+  <div class="parceiros-grid" id="lista-corporativos"></div>
 </section>
 {% endblock %}
 
 {% block script %}
 <script>
-  const container = document.getElementById('lista-coorporativos')
+  const container = document.getElementById('lista-corporativos')
 
-  async function GetCoorporativos() {
-    const url = 'http://127.0.0.1:8000/api/coorporativos/'
-    const resp = await fetch(url)
-    if (resp.ok) {
-      const data = await resp.json()
-      data.forEach(coorporativos => {
-        const div = document.createElement('div')
-        div.classList.add('parceiro-box')
-        div.innerHTML = `
-            ${coorporativos.nome
-                ? `<img src="${coorporativos.logo}">`
-                : `<div style='height:100px'>Sem logo</div>`
-            }
-            <p>${coorporativos.nome}</p>        `
-        container.appendChild(div)
-      })
-    } else {
-      container.innerHTML = '<p>Erro ao carregar profissionais.</p>'
+  async function GetCorporativos() {
+    const url = 'http://127.0.0.1:8000/api/corporativos/'
+    try {
+      const resp = await fetch(url)
+      if (resp.ok) {
+        const data = await resp.json()
+        data.forEach(corp => {
+          const div = document.createElement('div')
+          div.classList.add('parceiro-box')
+
+          div.innerHTML = `
+            <div style="text-align:center; padding:10px;">
+              ${corp.logo 
+                ? `<img src="${corp.logo}" alt="${corp.nome}" style="max-width:120px; max-height:120px; object-fit:contain; margin-bottom:10px;">`
+                : `<div style="height:120px; display:flex; align-items:center; justify-content:center; background:#eee;">Sem logo</div>`
+              }
+              <h3>${corp.nome}</h3>
+              <p>${corp.sobre}</p>
+              <a href="${corp.link}" target="_blank" rel="noopener noreferrer">
+                <button style="margin-top:10px; padding:8px 14px; background:#28a745; color:white; border:none; border-radius:6px; cursor:pointer;">
+                  Acessar
+                </button>
+              </a>
+            </div>
+          `
+          container.appendChild(div)
+        })
+      } else {
+        container.innerHTML = '<p>Erro ao carregar corporativos.</p>'
+      }
+    } catch (e) {
+      console.error(e)
+      container.innerHTML = '<p>Erro na conexão com a API.</p>'
     }
   }
 
-  GetCoorporativos()
+  GetCorporativos()
 </script>
 {% endblock %}

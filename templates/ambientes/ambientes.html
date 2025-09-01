@@ -4,33 +4,56 @@
 
 {% block content %}
 <h2>Página de Ambientes</h2>
+<section id="ambientes" class="fundo-verde" role="region" aria-labelledby="ambientes-titulo" style="margin-top: 110px;">
+  <div class="titulo-secao">
+    <hr>
+    <h2 id="ambientes-titulo">Ambientes</h2>
+    <hr>
+  </div>
+  <div class="parceiros-grid" id="lista-ambientes">
+    <!-- Ambientes serão inseridos via JavaScript -->
+  </div>
+</section>
 {% endblock %}
 
 {% block script %}
 <script>
-  const container = document.getElementById('lista-instituicoes')
+  const container = document.getElementById('lista-ambientes')
 
-  async function GetInstituicoes() {
-    const url = 'http://127.0.0.1:8000/api/instituicoes/'
-    const resp = await fetch(url)
-    if (resp.ok) {
-      const data = await resp.json()
-      data.forEach(instituicoes => {
-        const div = document.createElement('div')
-        div.classList.add('parceiro-box')
-        div.innerHTML = `
-            ${instituicoes.logo_startup
-                ? `<img src="${instituicoes.logo_instituicao}" alt="Logo de ${instituicoes.nome_instituicao}">`
-                : `<div style='height:100px'>Sem logo</div>`
-            }
-            <p>${instituicoes.nome_instituicao}</p>        `
-        container.appendChild(div)
-      })
-    } else {
-      container.innerHTML = '<p>Erro ao carregar instituicoes.</p>'
+  async function GetAmbientes() {
+    const url = 'http://127.0.0.1:8000/api/ambientes/'
+    try {
+      const resp = await fetch(url)
+      if (resp.ok) {
+        const data = await resp.json()
+        data.forEach(ambiente => {
+          const div = document.createElement('div')
+          div.classList.add('parceiro-box')
+
+          div.innerHTML = `
+            ${ambiente.logo_ambiente 
+              ? `<img src="${ambiente.logo_ambiente}" alt="Logo do ambiente" style="max-height:100px;">`
+              : `<div style='height:100px; display:flex; align-items:center; justify-content:center; background:#ccc;'>Sem logo</div>`}
+
+            <p><strong>Descrição:</strong> ${ambiente.sobre_ambiente}</p>
+
+            <p>
+              <a href="${ambiente.site_ambiente}" target="_blank" rel="noopener noreferrer">
+                Acessar site
+              </a>
+            </p>
+          `
+          container.appendChild(div)
+        })
+      } else {
+        container.innerHTML = '<p>Erro ao carregar ambientes.</p>'
+      }
+    } catch (e) {
+      console.error(e)
+      container.innerHTML = '<p>Erro na conexão com a API.</p>'
     }
   }
 
-  GetInstituicoes()
+  GetAmbientes()
 </script>
 {% endblock %}

@@ -3,18 +3,15 @@
 
 {% block title %}Editais - Mearim Valley{% endblock %}
 
-
 {% block content %}
 <h2>Página de Editais</h2>
-<section id="parceiros" class="fundo-verde" role="region" aria-labelledby="parceiros-titulo" style="margin-top: 110px;">
+<section id="editais" class="fundo-verde" role="region" aria-labelledby="editais-titulo" style="margin-top: 110px;">
   <div class="titulo-secao">
     <hr>
-    <h2 id="parceiros-titulo">Editais Abertos</h2>
+    <h2 id="editais-titulo">Editais Abertos</h2>
     <hr>
   </div>
-  <div class="parceiros-grid" id="lista-editais">
-    <!-- Editais serão inseridos via JavaScript -->
-  </div>
+  <div class="parceiros-grid" id="lista-editais"></div>
 </section>
 {% endblock %}
 
@@ -24,23 +21,36 @@
 
   async function GetEditais() {
     const url = 'http://127.0.0.1:8000/api/editais/'
-    const resp = await fetch(url)
-    if (resp.ok) {
-      const data = await resp.json()
-      data.forEach(editais => {
-        const div = document.createElement('div')
-        div.classList.add('parceiro-box')
-        div.innerHTML = `
-            ${editais.titulo 
-                // em "img" vai uma foto padrão para todos os objetos do app editais
-                ? `<img src="" alt="Logo de ">`
-                : `<div style='height:100px'>Sem logo</div>`
-            }
-            <p>${editais.link}</p>        `
-        container.appendChild(div)
-      })
-    } else {
-      container.innerHTML = '<p>Erro ao carregar editais.</p>'
+    try {
+      const resp = await fetch(url)
+      if (resp.ok) {
+        const data = await resp.json()
+        data.forEach(edital => {
+          const div = document.createElement('div')
+          div.classList.add('parceiro-box')
+
+          div.innerHTML = `
+            <div style="text-align:center; padding:10px;">
+              <img src="{% static 'img/edital_padrao.png' %}" alt="Edital" style="max-width:150px; margin-bottom:10px;">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h3>${edital.titulo}</h3>
+                <small>${edital.data_publicacao}</small>
+              </div>
+              <a href="${edital.link}" target="_blank" rel="noopener noreferrer">
+                <button style="margin-top:10px; padding:8px 14px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">
+                  Acessar Edital
+                </button>
+              </a>
+            </div>
+          `
+          container.appendChild(div)
+        })
+      } else {
+        container.innerHTML = '<p>Erro ao carregar editais.</p>'
+      }
+    } catch (e) {
+      console.error(e)
+      container.innerHTML = '<p>Erro na conexão com a API.</p>'
     }
   }
 

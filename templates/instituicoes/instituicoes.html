@@ -4,15 +4,13 @@
 
 {% block content %}
 <h2>Instituições</h2>
-<section id="parceiros" class="fundo-verde" role="region" aria-labelledby="parceiros-titulo" style="margin-top: 110px;">
+<section id="instituicoes" class="fundo-verde" role="region" aria-labelledby="instituicoes-titulo" style="margin-top: 110px;">
   <div class="titulo-secao">
     <hr>
-    <h2 id="parceiros-titulo">Conheça as Instituições</h2>
+    <h2 id="instituicoes-titulo">Conheça as Instituições</h2>
     <hr>
   </div>
-  <div class="parceiros-grid" id="lista-instituicoes">
-    <!-- Parceiros serão inseridos via JavaScript -->
-  </div>
+  <div class="parceiros-grid" id="lista-instituicoes"></div>
   <div class="parceiros-botao">
     <a href="{% url 'criar_instituicao' %}" class="botao-link">CADASTRAR INSTITUIÇÃO</a>
   </div>
@@ -25,22 +23,37 @@
 
   async function GetInstituicoes() {
     const url = 'http://127.0.0.1:8000/api/instituicoes/'
-    const resp = await fetch(url)
-    if (resp.ok) {
-      const data = await resp.json()
-      data.forEach(instituicoes => {
-        const div = document.createElement('div')
-        div.classList.add('parceiro-box')
-        div.innerHTML = `
-            ${instituicoes.logo_startup
-                ? `<img src="${instituicoes.logo_instituicao}" alt="Logo de ${instituicoes.nome_instituicao}">`
-                : `<div style='height:100px'>Sem logo</div>`
-            }
-            <p>${instituicoes.nome_instituicao}</p>        `
-        container.appendChild(div)
-      })
-    } else {
-      container.innerHTML = '<p>Erro ao carregar instituicoes.</p>'
+    try {
+      const resp = await fetch(url)
+      if (resp.ok) {
+        const data = await resp.json()
+        data.forEach(inst => {
+          const div = document.createElement('div')
+          div.classList.add('parceiro-box')
+
+          div.innerHTML = `
+            <div style="padding:15px; text-align:center;">
+              ${inst.logo_instituicao
+                ? `<img src="${inst.logo_instituicao}" alt="Logo de ${inst.nome_instituicao}" style="max-height:120px; margin-bottom:10px;">`
+                : `<div style="height:100px; display:flex; align-items:center; justify-content:center; background:#f4f4f4;">Sem logo</div>`
+              }
+              <h3>${inst.nome_instituicao}</h3>
+              <p style="margin:10px 0;">${inst.descricao_instituicao}</p>
+              <a href="${inst.link_site}" target="_blank" rel="noopener noreferrer">
+                <button style="margin-top:12px; padding:8px 14px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">
+                  Visitar Site
+                </button>
+              </a>
+            </div>
+          `
+          container.appendChild(div)
+        })
+      } else {
+        container.innerHTML = '<p>Erro ao carregar instituições.</p>'
+      }
+    } catch (e) {
+      console.error(e)
+      container.innerHTML = '<p>Erro na conexão com a API.</p>'
     }
   }
 

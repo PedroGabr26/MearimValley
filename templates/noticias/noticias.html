@@ -11,58 +11,49 @@
       <h2 id="noticias-titulo">Notícias</h2>
       <hr>
     </div>
-    <div class="noticias-cards-container">
-      <div class="noticia-card">
-        <div class="noticia-card-title">Notícia 1</div>
-        <img src="{% static 'noticia1.png' %}" alt="Notícia 1">
-        <div class="noticia-card-content">
-          <div class="noticia-card-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </div>
-          <a href="#" class="noticia-card-btn">Saiba Mais</a>
-        </div>
-      </div>
-      <div class="noticia-card">
-        <div class="noticia-card-title">Notícia 2</div>
-        <img src="{% static 'noticia2.png' %}" alt="Notícia 2">
-        <div class="noticia-card-content">
-          <div class="noticia-card-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </div>
-          <a href="#" class="noticia-card-btn">Saiba Mais</a>
-        </div>
-      </div>
-      <div class="noticia-card">
-        <div class="noticia-card-title">Notícia 3</div>
-        <img src="{% static 'noticia3.png' %}" alt="Notícia 3">
-        <div class="noticia-card-content">
-          <div class="noticia-card-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </div>
-          <a href="#" class="noticia-card-btn">Saiba Mais</a>
-        </div>
-      </div>
-    </div>
+    <div class="noticias-cards-container" id="lista-noticias"></div>
   </section>
 </main>
 {% endblock %}
 
 {% block script %}
 <script>
+  const container = document.getElementById('lista-noticias')
+
   async function GetNoticias() {
-    const ul = document.getElementById('lista-noticias')
-    const resp = await fetch('http://127.0.0.1:8000/api/noticias/')
-    if (resp.ok) {
-      const data = await resp.json()
-      data.forEach(noticia => {
-        const li = document.createElement('li')
-        li.innerHTML = `<strong>${noticia.titulo}</strong>`
-        ul.appendChild(li)
-      })
-    } else {
-      ul.innerHTML = "<li>Erro ao carregar notícias.</li>"
+    const url = 'http://127.0.0.1:8000/api/noticias/'
+    try {
+      const resp = await fetch(url)
+      if (resp.ok) {
+        const data = await resp.json()
+        data.forEach(noticia => {
+          const div = document.createElement('div')
+          div.classList.add('noticia-card')
+
+          div.innerHTML = `
+            <div class="noticia-card-title">${noticia.titulo}</div>
+            ${noticia.foto 
+              ? `<img src="${noticia.foto}" alt="${noticia.titulo}">`
+              : `<div style="height:150px; background:#f4f4f4; display:flex; align-items:center; justify-content:center;">Sem imagem</div>`
+            }
+            <div class="noticia-card-content">
+              <div class="noticia-card-desc">
+                ${noticia.texto.substring(0, 30)}...
+              </div>
+              <a href="/noticias/${noticia.id}/" class="noticia-card-btn">Saiba Mais</a>
+            </div>
+          `
+          container.appendChild(div)
+        })
+      } else {
+        container.innerHTML = '<p>Erro ao carregar notícias.</p>'
+      }
+    } catch (e) {
+      console.error(e)
+      container.innerHTML = '<p>Erro na conexão com a API.</p>'
     }
   }
+
   GetNoticias()
 </script>
 {% endblock %}
