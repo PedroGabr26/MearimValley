@@ -1202,3 +1202,20 @@ ul.submenu li a:hover {
 .submenu.active {
   display: block;
 }
+
+.pagina-noticia {
+  background: #fff;
+  color: #222; /* garante texto visível */
+  padding: 40px 20px;
+}
+
+.pagina-noticia h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.pagina-noticia p {
+  font-size: 1rem;
+  color: #333;
+}

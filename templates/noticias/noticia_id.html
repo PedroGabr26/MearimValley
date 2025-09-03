@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Notícia - Mearim Valley{% endblock %}
+
+{% block content %}
+<div class="pagina-noticia">
+  <h1>{{ noticia.titulo }}</h1>
+  <p><strong>Descrição:</strong> {{ noticia.texto }}</p>
+  <p><strong>Data da Notícia:</strong> {{ noticia.data_noticia|date:"d/m/Y" }}</p>
+</div>
+{% endblock %}
