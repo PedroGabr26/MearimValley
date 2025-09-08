@@ -64,7 +64,7 @@
 
       if (resp.ok) {
         const data = await resp.json();
-        mensagem.textContent = '✅ Parceiro cadastrado com sucesso!'
+        mensagem.textContent = '✅ Instituição cadastrada com sucesso!'
         mensagem.style.color = 'green'
       } else {
         const erro = await resp.text();
